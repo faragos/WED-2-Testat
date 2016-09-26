@@ -4,48 +4,123 @@
     <meta charset="UTF-8">
     <title>Notizverwaltung</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script language="javascript"
+            src="http://code.jquery.com/jquery-2.2.3.min.js">
+    </script>
+    <script language="javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js">
+    </script>
+    <script id='notesTemplateText' type='text/x-handlebars-template'>
+        {{#each this}}
+            <article class="box">
+                <div class="width-70 box">
+                    <div class="width30">
+                        <h4>{{ createDate }}</h4>
+                        {{#if finished}}
+                            <input id="finished{{id}}" checked type="checkbox"></button>
+                            <label for="finished{{id}}">Finished  [ <time>{{finishDate}}</time> ]</label>
+                        {{else}}
+                            <input id="finished{{id}}" type="checkbox"></button>
+                            <label for="finished{{id}}">Finished</label>
+                        {{/if}}
+
+                    </div>
+                    <div class="width-70">
+                        <h4 class="note-title">{{ title }}</h4>
+                        <textarea>
+                            {{ text }}
+                        </textarea>
+                    </div>
+                </div>
+                <div class="edit-button-holder width-30 box">
+                    <button class="edit-button">Edit</button>
+                </div>
+            </article>
+        {{/each}}
+    </script>
 </head>
 <body>
 <div class="container">
-<header class="box">
-    <div class="width70">
-        <button>Create new Note</button>
-        <nav>
-            <button>By finish Date</button>
-            <button>By created Date</button>
-            <button>By Importance</button>
-        </nav>
-    </div>
-    <div class="width30">
-        <div>
-            <select>
-                <option value="BlackWhite-Style">BlackWhite-Style</option>
-            </select>
+<header>
+    <form class="box">
+        <div class="width-70">
+            <button>Create new Note</button>
+            <nav class="sort">
+                    <input type="radio" id="sort-by-finish-date" name="sort-by" checked>By finish Date</button>
+                    <input type="radio" id="sort-by-created-date" name="sort-by">By create Date</button>
+                    <input type="radio" id="sort-by-importance" name="sort-by">By Importance</button>
+            </nav>
         </div>
-        <div>
-            <button>Show finished</button>
+        <div class="width-30">
+            <div>
+                <select>
+                    <option value="BlackWhite-Style">BlackWhite-Style</option>
+                </select>
+            </div>
+            <div class="filter">
+                <input type="checkbox" id="filter-by-finished">Show finished</input>
+            </div>
         </div>
-    </div>
+    </form>
 </header>
 <div class="content">
-    <article class="box">
-        <div class="width70 box">
-            <div class="width30">
-                <h4>text</h4>
-                <label for="finished">Erledigt</label>
-                <input id="finished" type="checkbox"></button>
-            </div>
-            <div class="width70">
-                <h4>text</h4>
-                <textarea>
-                    Lorem
-                </textarea>
-            </div>
-        </div>
-        <div class="edit-button-holder width30 box">
-            <button class="edit-button">Edit</button>
-        </div>
-    </article>
+    <script language="javascript">
+
+            var notes = [
+                {id:'1', finished:true, title:'Title Lorem Ipsum 1234', text:'Lorem Ipsum 1234', createDate:'2014-01-02', lastName: 'Pan', age:13, finishDate:'2014-02-02', importance:2},
+                {id:'2', finished:false, title:'Title Lorem Ipsum 12345684654', text:'Lorem Ipsum 12345684654', createDate:'2015-02-02', lastName:'Hook', age:35, importance:1}
+            ];
+
+
+            var notesTemplateText = $('#notesTemplateText').html();
+            var createNotesHtml = Handlebars.compile(notesTemplateText);
+
+
+            function compareFinishDate(d1, d2) {
+                if(!Date.parse(d1.finishDate)){
+                    return true;
+                }
+                if(!Date.parse(d2.finishDate)){
+                    return false;
+                }
+                return new Date(d1.finishDate) < new Date(d2.finishDate);
+            }
+
+            function compareCreateDate(d1, d2) {
+                return new Date(d1.createDate) < new Date(d2.createDate);
+            }
+
+            function compareImportance(i1, i2) {
+                return i1.importance < i2.importance;
+            }
+
+            renderNotes();
+
+            $(function() {
+                $(".sort").on("click", "input", renderNotes);
+                $(".filter").on("click", "input", renderNotes);
+            });
+
+            function renderNotes () {
+                var filtered_notes = notes;
+                if ($('#filter-by-finished:checked').length > 0) {
+                    filtered_notes = $.grep(notes, function (note) {
+                        return note.finished === true;
+                    });
+                }
+
+                var filtered_sorted_notes;
+
+                if($('#sort-by-finish-date:checked').length > 0) {
+                    filtered_sorted_notes = filtered_notes.sort(compareFinishDate);
+                } else if ($('#sort-by-created-date:checked').length > 0) {
+                    filtered_sorted_notes = filtered_notes.sort(compareCreateDate);
+                } else if ($('#sort-by-importance:checked').length > 0) {
+                    filtered_sorted_notes = filtered_notes.sort(compareImportance);
+                }
+                $(".content").html(createNotesHtml(filtered_sorted_notes));
+            }
+    </script>
 </div>
 <footer></footer>
 </div>
