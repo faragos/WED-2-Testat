@@ -50,19 +50,37 @@ button, select {
 
 .importance img {
     max-height: 30px;
-    max-width: auto;
 }
 
 /* checkbox */
 
-.finished label {
+.filter {
+    display: flex;
+}
+
+.filter label {
     width:170px;
     margin:4px;
     background-color:#EFEFEF;
     border-radius:4px;
     border:1px solid #D0D0D0;
     overflow:auto;
+}
 
+.filter label span {
+    text-align:center;
+    padding:13px 0px;
+    display:block;
+}
+
+.filter input {
+    position:absolute;
+    top:-20px;
+}
+
+.filter input:checked + span {
+    background-color:#911;
+    color:#fff;
 }
 
 /* Radiobuttons */
@@ -76,9 +94,8 @@ button, select {
     width:170px;
     margin:4px;
     background-color:#EFEFEF;
-    border-radius:4px;
     border:1px solid #D0D0D0;
-    overflow:auto;
+    border-radius:4px;
 
 }
 
@@ -97,22 +114,4 @@ button, select {
 .sort input:checked + span {
     background-color:#404040;
     color:#F7F7F7;
-}
-
-label {
-    margin: 10px;
-    padding: 5px;
-    border: 1px solid gray;
-}
-
-input:focus + label {
-    border-color: blue;
-}
-
-input:checked + label {
-    border-color: red;
-}
-
-input:focus:checked + label {
-    border-color: green;
 }

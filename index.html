@@ -14,13 +14,13 @@
         {{#each this}}
             <article class="box">
                 <div class="width-70 box">
-                    <div class="width-30 finished">
+                    <div class="width-30">
                         <h4>{{ createDate }}</h4>
                         {{#if finished}}
-                            <input id="finished{{id}}" checked type="checkbox"></button>
+                            <input id="finished{{id}}" checked type="checkbox">
                             <label for="finished{{id}}">Finished  [ <time>{{finishDate}}</time> ]</label>
                         {{else}}
-                            <input id="finished{{id}}" type="checkbox"></button>
+                            <input id="finished{{id}}" type="checkbox">
                             <label for="finished{{id}}">Finished</label>
                         {{/if}}
 
@@ -51,9 +51,9 @@
         <div class="width-70">
             <button>Create new Note</button>
             <nav class="sort">
-                <label><input type="radio" id="sort-by-finish-date" name="sort-by" checked><span>By finish Date</span></button></label>
-                <label><input type="radio" id="sort-by-created-date" name="sort-by"><span>By create Date</span></button></label>
-                <label><input type="radio" id="sort-by-importance" name="sort-by"><span>By Importance</span></button></label>
+                <label><input type="radio" id="sort-by-finish-date" name="sort-by" checked><span>By finish Date</span></label>
+                <label><input type="radio" id="sort-by-created-date" name="sort-by"><span>By create Date</span></label>
+                <label><input type="radio" id="sort-by-importance" name="sort-by"><span>By Importance</span></label>
             </nav>
         </div>
         <div class="width-30">
@@ -63,7 +63,7 @@
                 </select>
             </div>
             <div class="filter">
-                <input type="checkbox" id="filter-by-finished">Show finished</input>
+                <label><input type="checkbox"  id="filter-by-finished"><span>Show finished</span></label>
             </div>
         </div>
     </form>
