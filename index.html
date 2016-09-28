@@ -14,7 +14,7 @@
         {{#each this}}
             <article class="box">
                 <div class="width-70 box">
-                    <div class="width30">
+                    <div class="width-30 finished">
                         <h4>{{ createDate }}</h4>
                         {{#if finished}}
                             <input id="finished{{id}}" checked type="checkbox"></button>
@@ -26,10 +26,15 @@
 
                     </div>
                     <div class="width-70">
-                        <h4 class="note-title">{{ title }}</h4>
-                        <textarea>
-                            {{ text }}
+                        <h4 class="note-title">
+                            {{ title }}
+                        </h4>
+                        <textarea class="note-description">
+                            {{ description }}
                         </textarea>
+                        {{#times importance}}
+                        <span class="importance"><img src="img/lightning-bolt.svg"></span>
+                        {{/times}}
                     </div>
                 </div>
                 <div class="edit-button-holder width-30 box">
@@ -46,9 +51,9 @@
         <div class="width-70">
             <button>Create new Note</button>
             <nav class="sort">
-                    <input type="radio" id="sort-by-finish-date" name="sort-by" checked>By finish Date</button>
-                    <input type="radio" id="sort-by-created-date" name="sort-by">By create Date</button>
-                    <input type="radio" id="sort-by-importance" name="sort-by">By Importance</button>
+                <label><input type="radio" id="sort-by-finish-date" name="sort-by" checked><span>By finish Date</span></button></label>
+                <label><input type="radio" id="sort-by-created-date" name="sort-by"><span>By create Date</span></button></label>
+                <label><input type="radio" id="sort-by-importance" name="sort-by"><span>By Importance</span></button></label>
             </nav>
         </div>
         <div class="width-30">
@@ -64,65 +69,13 @@
     </form>
 </header>
 <div class="content">
-    <script language="javascript">
 
-            var notes = [
-                {id:'1', finished:true, title:'Title Lorem Ipsum 1234', text:'Lorem Ipsum 1234', createDate:'2014-01-02', lastName: 'Pan', age:13, finishDate:'2014-02-02', importance:2},
-                {id:'2', finished:false, title:'Title Lorem Ipsum 12345684654', text:'Lorem Ipsum 12345684654', createDate:'2015-02-02', lastName:'Hook', age:35, importance:1}
-            ];
-
-
-            var notesTemplateText = $('#notesTemplateText').html();
-            var createNotesHtml = Handlebars.compile(notesTemplateText);
-
-
-            function compareFinishDate(d1, d2) {
-                if(!Date.parse(d1.finishDate)){
-                    return true;
-                }
-                if(!Date.parse(d2.finishDate)){
-                    return false;
-                }
-                return new Date(d1.finishDate) < new Date(d2.finishDate);
-            }
-
-            function compareCreateDate(d1, d2) {
-                return new Date(d1.createDate) < new Date(d2.createDate);
-            }
-
-            function compareImportance(i1, i2) {
-                return i1.importance < i2.importance;
-            }
-
-            renderNotes();
-
-            $(function() {
-                $(".sort").on("click", "input", renderNotes);
-                $(".filter").on("click", "input", renderNotes);
-            });
-
-            function renderNotes () {
-                var filtered_notes = notes;
-                if ($('#filter-by-finished:checked').length > 0) {
-                    filtered_notes = $.grep(notes, function (note) {
-                        return note.finished === true;
-                    });
-                }
-
-                var filtered_sorted_notes;
-
-                if($('#sort-by-finish-date:checked').length > 0) {
-                    filtered_sorted_notes = filtered_notes.sort(compareFinishDate);
-                } else if ($('#sort-by-created-date:checked').length > 0) {
-                    filtered_sorted_notes = filtered_notes.sort(compareCreateDate);
-                } else if ($('#sort-by-importance:checked').length > 0) {
-                    filtered_sorted_notes = filtered_notes.sort(compareImportance);
-                }
-                $(".content").html(createNotesHtml(filtered_sorted_notes));
-            }
-    </script>
 </div>
 <footer></footer>
 </div>
 </body>
 </html>
+
+
+<script language="javascript" src="js/main.js" >
+</script>

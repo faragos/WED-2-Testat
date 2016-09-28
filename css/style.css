@@ -38,3 +38,81 @@ button, select {
 .edit-button-holder {
     align-items: center;
 }
+
+.note-description {
+    margin-right: 30px;
+}
+
+.importance {
+    color: #ff0000;
+    font-size: 30px;
+}
+
+.importance img {
+    max-height: 30px;
+    max-width: auto;
+}
+
+/* checkbox */
+
+.finished label {
+    width:170px;
+    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+
+}
+
+/* Radiobuttons */
+
+.sort {
+    margin:4px;
+    display:flex;
+}
+
+.sort label {
+    width:170px;
+    margin:4px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+
+}
+
+.sort label span {
+    text-align:center;
+    font-size: 16px;
+    padding:13px 0px;
+    display:block;
+}
+
+.sort label input {
+    position:absolute;
+    top:-20px;
+}
+
+.sort input:checked + span {
+    background-color:#404040;
+    color:#F7F7F7;
+}
+
+label {
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid gray;
+}
+
+input:focus + label {
+    border-color: blue;
+}
+
+input:checked + label {
+    border-color: red;
+}
+
+input:focus:checked + label {
+    border-color: green;
+}
