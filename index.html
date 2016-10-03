@@ -1,79 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Notizverwaltung</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script language="javascript"
-            src="http://code.jquery.com/jquery-2.2.3.min.js">
-    </script>
-    <script language="javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js">
-    </script>
-    <script id='notesTemplateText' type='text/x-handlebars-template'>
-        {{#each this}}
-            <article class="box">
-                <div class="width-70 box">
-                    <div class="width-30">
-                        <h4>{{ createDate }}</h4>
-                        {{#if finished}}
-                            <input id="finished{{id}}" checked type="checkbox">
-                            <label for="finished{{id}}">Finished  [ <time>{{finishDate}}</time> ]</label>
-                        {{else}}
-                            <input id="finished{{id}}" type="checkbox">
-                            <label for="finished{{id}}">Finished</label>
-                        {{/if}}
+    <head>
+        <meta charset="UTF-8">
+        <title>Notizverwaltung</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script language="javascript"
+                src="http://code.jquery.com/jquery-2.2.3.min.js">
+        </script>
+        <script language="javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js">
+        </script>
+        <script id='notesTemplateText' type='text/x-handlebars-template'>
+            {{#each this}}
+                <article class="box">
+                    <div class="width-70 box">
+                        <div class="width-30">
+                            <h4>{{ createDate }}</h4>
+                            {{#if finished}}
+                                <input id="finished{{id}}" checked type="checkbox">
+                                <label for="finished{{id}}">Finished  [ <time>{{finishDate}}</time> ]</label>
+                            {{else}}
+                                <input id="finished{{id}}" type="checkbox">
+                                <label for="finished{{id}}">Finished</label>
+                            {{/if}}
 
+                        </div>
+                        <div class="width-70">
+                            <h4 class="note-title">
+                                {{ title }}
+                            </h4>
+                            <textarea class="note-description">
+                                {{ description }}
+                            </textarea>
+                            {{#times importance}}
+                            <span class="importance"><img src="img/lightning-bolt.svg"></span>
+                            {{/times}}
+                        </div>
                     </div>
+                    <div class="edit-button-holder width-30 box">
+                        <button class="edit-button">Edit</button>
+                    </div>
+                </article>
+            {{/each}}
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <form class="box">
                     <div class="width-70">
-                        <h4 class="note-title">
-                            {{ title }}
-                        </h4>
-                        <textarea class="note-description">
-                            {{ description }}
-                        </textarea>
-                        {{#times importance}}
-                        <span class="importance"><img src="img/lightning-bolt.svg"></span>
-                        {{/times}}
+                        <a href="html/noteForm.html">Create new Note</a>
+                        <nav class="sort">
+                            <label><input type="radio" id="sort-by-finish-date" name="sort-by" checked><span>By finish Date</span></label>
+                            <label><input type="radio" id="sort-by-created-date" name="sort-by"><span>By create Date</span></label>
+                            <label><input type="radio" id="sort-by-importance" name="sort-by"><span>By Importance</span></label>
+                        </nav>
                     </div>
-                </div>
-                <div class="edit-button-holder width-30 box">
-                    <button class="edit-button">Edit</button>
-                </div>
-            </article>
-        {{/each}}
-    </script>
-</head>
-<body>
-<div class="container">
-<header>
-    <form class="box">
-        <div class="width-70">
-            <button>Create new Note</button>
-            <nav class="sort">
-                <label><input type="radio" id="sort-by-finish-date" name="sort-by" checked><span>By finish Date</span></label>
-                <label><input type="radio" id="sort-by-created-date" name="sort-by"><span>By create Date</span></label>
-                <label><input type="radio" id="sort-by-importance" name="sort-by"><span>By Importance</span></label>
-            </nav>
-        </div>
-        <div class="width-30">
-            <div>
-                <select>
-                    <option value="BlackWhite-Style">BlackWhite-Style</option>
-                </select>
-            </div>
-            <div class="filter">
-                <label><input type="checkbox"  id="filter-by-finished"><span>Show finished</span></label>
-            </div>
-        </div>
-    </form>
-</header>
-<div class="content">
+                    <div class="width-30">
+                        <div>
+                            <select>
+                                <option value="BlackWhite-Style">BlackWhite-Style</option>
+                            </select>
+                        </div>
+                        <div class="filter">
+                            <label><input type="checkbox"  id="filter-by-finished"><span>Show finished</span></label>
+                        </div>
+                    </div>
+                </form>
+            </header>
+            <div class="content">
 
-</div>
-<footer></footer>
-</div>
-</body>
+            </div>
+            <footer></footer>
+        </div>
+    </body>
 </html>
 
 

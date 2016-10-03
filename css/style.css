@@ -115,3 +115,7 @@ button, select {
     background-color:#404040;
     color:#F7F7F7;
 }
+
+.edit-note input {
+    display: block;
+}

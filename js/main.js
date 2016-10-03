@@ -40,7 +40,16 @@ $(function() {
             importance: 3
         }
     ];
-    var currentNotes = notes;
+
+    var savedNotes = sessionStorage.getItem("notes");
+    if( !savedNotes )
+    {
+        sessionStorage.setItem("notes", JSON.stringify(notes));
+        savedNotes = sessionStorage.getItem("notes");
+    }
+    savedNotes = JSON.parse(savedNotes);
+
+    var currentNotes = savedNotes;
 
 
     var notesTemplateText = $('#notesTemplateText').html();
