@@ -15,10 +15,10 @@
                 <article class="box">
                     <div class="width-70 box">
                         <div class="width-30">
-                            <h4>{{ createDate }}</h4>
+                            <h4>{{formatDate createDate }}</h4>
                             {{#if finished}}
                                 <input id="finished{{id}}" checked type="checkbox">
-                                <label for="finished{{id}}">Finished  [ <time>{{finishDate}}</time> ]</label>
+                                <label for="finished{{id}}">Finished  [ <time>{{formatDate finishDate }}</time> ]</label>
                             {{else}}
                                 <input id="finished{{id}}" type="checkbox">
                                 <label for="finished{{id}}">Finished</label>
@@ -73,9 +73,11 @@
             </div>
             <footer></footer>
         </div>
+
+        <script language="javascript" src="js/main.js">
+        </script>
+        <script language="javascript" src="js/momentjs.js">
+        </script>
     </body>
 </html>
 
-
-<script language="javascript" src="js/main.js" >
-</script>

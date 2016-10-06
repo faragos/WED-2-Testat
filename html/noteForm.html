@@ -7,27 +7,29 @@
 </head>
 <body>
 <div class="container edit-note">
-    <label for="title">Title</label>
-    <input id="title" type="text" />
+    <form id="noteForm">
+        <label for="title">Title</label>
+        <input name="title" id="title" type="text" />
 
-    <label for="description">Description</label>
-    <input id="description" type="text" />
+        <label for="description">Description</label>
+        <input name="description" id="description" type="text" />
 
-    <label for="first-name">First Name</label>
-    <input id="first-name" type="text" />
+        <label for="first-name">First Name</label>
+        <input name="firstName" id="first-name" type="text" />
 
-    <label for="last-name">Last Name</label>
-    <input id="last-name" type="text" />
+        <label for="last-name">Last Name</label>
+        <input name="lastName" id="last-name" type="text" />
 
-    <label>Importance</label>
-    <input type="radio" name="setImportance" />
-    <input type="radio" name="setImportance" />
-    <input type="radio" name="setImportance" />
-    <input type="radio" name="setImportance" />
+        <label>Importance</label>
+        <input type="radio" name="importance" value="1" />
+        <input type="radio" name="importance" value="2" />
+        <input type="radio" name="importance" value="3" />
+        <input type="radio" name="importance" value="4" />
+        <input type="radio" name="importance" value="5" />
 
-<input class="save" type="submit" value="Save">
-<input class="cancel" type="button" value="Cancel">
-
+        <input class="save" type="submit" value="Save">
+        <input class="cancel" type="button" value="Cancel">
+    </form>
 </div>
 <script language="javascript"
         src="http://code.jquery.com/jquery-2.2.3.min.js">

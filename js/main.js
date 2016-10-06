@@ -1,9 +1,21 @@
 $(function() {
+    'use strict'
     Handlebars.registerHelper('times', function (n, block) {
         var accum = '';
         for (var i = 0; i < n; ++i)
             accum += block.fn(i);
         return accum;
+    });
+
+    Handlebars.registerHelper("formatDate", function(datetime) {
+        if (moment) {
+            // can use other formats like 'lll' too
+            moment.locale('de');
+            return moment(datetime).format('LL');
+        }
+        else {
+            return datetime;
+        }
     });
 
 
@@ -42,6 +54,7 @@ $(function() {
     ];
 
     var savedNotes = sessionStorage.getItem("notes");
+    console.log(savedNotes);
     if( !savedNotes )
     {
         sessionStorage.setItem("notes", JSON.stringify(notes));
@@ -88,11 +101,11 @@ $(function() {
 
     function filterNotes() {
         if ($('#filter-by-finished:checked').length > 0) {
-            currentNotes = $.grep(notes, function (note) {
+            currentNotes = $.grep(savedNotes, function (note) {
                 return note.finished === true;
             });
         } else {
-            currentNotes = notes;
+            currentNotes = savedNotes;
         }
 
         $(".content").html(createNotesHtml(currentNotes));
