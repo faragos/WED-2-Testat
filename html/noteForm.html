@@ -7,15 +7,15 @@
 </head>
 <body>
 <div class="container edit-note">
-    <form id="noteForm">
+    <form id="noteForm" onsubmit="save();" >
         <label for="title">Title</label>
-        <input name="title" id="title" type="text" />
+        <input name="title" id="title" type="text" required />
 
         <label for="description">Description</label>
         <input name="description" id="description" type="text" />
 
         <label for="finishDate">Finish Date</label>
-        <input name="finishDate" id="finishDate" type="date" />
+        <input name="finishDate" id="finishDate" type="date" required />
 
         <label>Importance</label>
         <input type="radio" name="importance" value="1" />

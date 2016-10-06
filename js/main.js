@@ -97,6 +97,7 @@ $(function() {
     $(function () {
         $(".sort").on("click", "input", sortNotes);
         $(".filter").on("click", "input", filterNotes);
+        $(".theme").on("change", "select", changeTheme);
     });
 
     function filterNotes() {
@@ -126,5 +127,22 @@ $(function() {
     function renderNotes() {
         filterNotes();
         sortNotes();
+    }
+
+    function changeTheme() {
+        var cssId = 'night-theme';
+        if ($('.theme select').val() == 'night-theme' && !document.getElementById(cssId)) {
+            var head  = document.getElementsByTagName('head')[0];
+            var link  = document.createElement('link');
+            link.id   = cssId;
+            link.rel  = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'css/night-theme.css';
+            link.media = 'all';
+            head.appendChild(link);
+        }
+        if ($('.theme select').val() == 'classic-theme' && document.getElementById(cssId)) {
+            document.getElementsByTagName('head')[0].removeChild(document.getElementById(cssId));
+        }
     }
 });
