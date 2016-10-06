@@ -18,6 +18,10 @@ $(function() {
         }
     });
 
+    function editNote(id) {
+        console.log(id);
+    }
+
 
     var notes = [
         {
@@ -26,29 +30,25 @@ $(function() {
             title: 'Title Lorem Ipsum 1234',
             description: 'Lorem Ipsum 1234',
             createDate: '2014-01-02',
-            lastName: 'Pan',
-            age: 13,
             finishDate: '2014-02-02',
             importance: 2
         },
         {
             id: '2',
-            finished: false,
+            finished: true,
             title: 'Title Lorem Ipsum 12345684654',
             description: 'Lorem Ipsum 12345684654',
             createDate: '2015-02-02',
-            lastName: 'Hook',
-            age: 17,
+            finishDate: '2014-04-02',
             importance: 1
         },
         {
             id: '3',
-            finished: false,
+            finished: true,
             title: 'Title Lorem Ipsum 12345684654',
             description: 'Loremdfdsf Ipsum 12345684654',
             createDate: '2015-08-02',
-            lastName: 'dfdsfdsf',
-            age: 35,
+            finishDate: '2016-02-02',
             importance: 3
         }
     ];

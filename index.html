@@ -16,13 +16,8 @@
                     <div class="width-70 box">
                         <div class="width-30">
                             <h4>{{formatDate createDate }}</h4>
-                            {{#if finished}}
-                                <input id="finished{{id}}" checked type="checkbox">
+                                <input id="finished{{id}}" checked="{{finished}}" type="checkbox">
                                 <label for="finished{{id}}">Finished  [ <time>{{formatDate finishDate }}</time> ]</label>
-                            {{else}}
-                                <input id="finished{{id}}" type="checkbox">
-                                <label for="finished{{id}}">Finished</label>
-                            {{/if}}
 
                         </div>
                         <div class="width-70">
@@ -38,7 +33,7 @@
                         </div>
                     </div>
                     <div class="edit-button-holder width-30 box">
-                        <button class="edit-button">Edit</button>
+                        <button class="edit-button" onclick="window.location= 'html/noteForm.html';editNote({{ id }})">Edit</button>
                     </div>
                 </article>
             {{/each}}
