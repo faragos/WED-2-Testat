@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container edit-note">
-    <form id="noteForm" onsubmit="save();" >
+    <form id="noteForm" onsubmit="return save(this)" >
         <label for="title">Title</label>
         <input name="title" id="title" type="text" required />
 
@@ -34,8 +34,8 @@
 <script language="javascript"
         src="http://code.jquery.com/jquery-2.2.3.min.js">
 </script>
-<script language="javascript"
-        src="../js/editNote.js">
-</script>
+<script language="javascript" src="../js/localStorage.js"></script>
+<script language="javascript" src="../js/util.js"></script>
+<script language="javascript" src="../js/editNote.js"></script>
 </body>
 </html>

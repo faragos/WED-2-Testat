@@ -22,57 +22,13 @@ $(function() {
         console.log(id);
     }
 
-
-    var notes = [
-        {
-            id: '1',
-            finished: true,
-            title: 'Title Lorem Ipsum 1234',
-            description: 'Lorem Ipsum 1234',
-            createDate: '2014-01-02',
-            finishDate: '2014-02-02',
-            importance: 2
-        },
-        {
-            id: '2',
-            finished: true,
-            title: 'Title Lorem Ipsum 12345684654',
-            description: 'Lorem Ipsum 12345684654',
-            createDate: '2015-02-02',
-            finishDate: '2014-04-02',
-            importance: 1
-        },
-        {
-            id: '3',
-            finished: true,
-            title: 'Title Lorem Ipsum 12345684654',
-            description: 'Loremdfdsf Ipsum 12345684654',
-            createDate: '2015-08-02',
-            finishDate: '2016-02-02',
-            importance: 3
-        }
-    ];
-
-    var savedNotes = sessionStorage.getItem("notes");
-    console.log(savedNotes);
-    if( !savedNotes )
-    {
-        sessionStorage.setItem("notes", JSON.stringify(notes));
-        savedNotes = sessionStorage.getItem("notes");
-    }
-    savedNotes = JSON.parse(savedNotes);
-
-    var currentNotes = savedNotes;
+    var currentNotes = LocalStorage.getNotes();
 
 
     var notesTemplateText = $('#notesTemplateText').html();
     var createNotesHtml = Handlebars.compile(notesTemplateText);
 
     renderNotes();
-
-    /*$.each(notes, function (index, note){
-
-     })*/
 
 
     function compareFinishDate(d1, d2) {
@@ -94,19 +50,17 @@ $(function() {
     }
 
 
-    $(function () {
-        $(".sort").on("click", "input", sortNotes);
-        $(".filter").on("click", "input", filterNotes);
-        $(".theme").on("change", "select", changeTheme);
-    });
+    $(".sort").on("click", "input", sortNotes);
+    $(".filter").on("click", "input", filterNotes);
+    $(".theme").on("change", "select", changeTheme);
 
     function filterNotes() {
         if ($('#filter-by-finished:checked').length > 0) {
-            currentNotes = $.grep(savedNotes, function (note) {
+            currentNotes = $.grep(LocalStorage.getNotes(), function (note) {
                 return note.finished === true;
             });
         } else {
-            currentNotes = savedNotes;
+            currentNotes = LocalStorage.getNotes();
         }
 
         $(".content").html(createNotesHtml(currentNotes));
@@ -127,22 +81,5 @@ $(function() {
     function renderNotes() {
         filterNotes();
         sortNotes();
-    }
-
-    function changeTheme() {
-        var cssId = 'night-theme';
-        if ($('.theme select').val() == 'night-theme' && !document.getElementById(cssId)) {
-            var head  = document.getElementsByTagName('head')[0];
-            var link  = document.createElement('link');
-            link.id   = cssId;
-            link.rel  = 'stylesheet';
-            link.type = 'text/css';
-            link.href = 'css/night-theme.css';
-            link.media = 'all';
-            head.appendChild(link);
-        }
-        if ($('.theme select').val() == 'classic-theme' && document.getElementById(cssId)) {
-            document.getElementsByTagName('head')[0].removeChild(document.getElementById(cssId));
-        }
     }
 });
