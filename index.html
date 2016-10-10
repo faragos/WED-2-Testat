@@ -16,9 +16,8 @@
                     <div class="width-70 box">
                         <div class="width-30">
                             <h4>{{formatDate createDate }}</h4>
-                                <input id="finished{{id}}" checked="{{finished}}" type="checkbox">
+                                <input id="finished{{id}}" {{#if finished}}checked{{/if}} type="checkbox">
                                 <label for="finished{{id}}">Finished  [ <time>{{formatDate finishDate }}</time> ]</label>
-
                         </div>
                         <div class="width-70">
                             <h4 class="note-title">
@@ -33,7 +32,7 @@
                         </div>
                     </div>
                     <div class="edit-button-holder width-30 box">
-                        <button class="edit-button" onclick="window.location= 'html/noteForm.html';editNote({{ id }})">Edit</button>
+                        <button class="edit-button" onclick="editNote({{ id }})">Edit</button>
                     </div>
                 </article>
             {{/each}}
@@ -44,7 +43,7 @@
             <header>
                 <form class="box">
                     <div class="width-70">
-                        <a href="html/noteForm.html">Create new Note</a>
+                        <input type="button" class="add-button" value="Create new Note">
                         <nav class="sort">
                             <label><input type="radio" id="sort-by-finish-date" name="sort-by" checked><span>By finish Date</span></label>
                             <label><input type="radio" id="sort-by-created-date" name="sort-by"><span>By create Date</span></label>
@@ -70,6 +69,7 @@
             <footer></footer>
         </div>
         <script language="javascript" src="js/localStorage.js"></script>
+        <script language="javascript" src="js/todoService.js"></script>
         <script language="javascript" src="js/util.js"></script>
         <script language="javascript" src="js/main.js"></script>
         <script language="javascript" src="js/momentjs.js"></script>
