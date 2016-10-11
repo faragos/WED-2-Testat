@@ -87,7 +87,7 @@ $(function() {
 });
 
 function redirect() {
-    window.location= 'html/noteForm.html';
+    window.location= '../html/noteForm.html';
 }
 
 function editNote(id) {
