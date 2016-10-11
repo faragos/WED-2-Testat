@@ -17,12 +17,20 @@
         <label for="finishDate">Finish Date</label>
         <input name="finishDate" id="finishDate" type="date" required />
 
-        <label>Importance</label>
-        <input type="radio" name="importance" value="1" checked />
-        <input type="radio" name="importance" value="2" />
-        <input type="radio" name="importance" value="3" />
-        <input type="radio" name="importance" value="4" />
-        <input type="radio" name="importance" value="5" />
+        <span class="importance">
+            <input type="radio" name="importance" value="5" id="importance-input-1-5" class="importance-input" checked />
+            <label for="importance-input-1-5" class="importance-label"></label>
+            <input type="radio" name="importance" value="4" id="importance-input-1-4" class="importance-input" />
+            <label for="importance-input-1-4" class="importance-label"></label>
+            <input type="radio" name="importance" value="3" id="importance-input-1-3" class="importance-input" />
+            <label for="importance-input-1-3" class="importance-label"></label>
+            <input type="radio" name="importance" value="2" id="importance-input-1-2" class="importance-input" />
+            <label for="importance-input-1-2" class="importance-label"></label>
+            <input type="radio" name="importance" value="1" id="importance-input-1-1" class="importance-input" />
+            <label for="importance-input-1-1" class="importance-label"></label>
+        </span>
+
+        <br>
 
         <label for="finished">Finished</label>
         <input name="finished" id="finished" type="checkbox" />

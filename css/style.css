@@ -119,3 +119,32 @@ button, select {
 .edit-note input {
     display: block;
 }
+
+
+.importance {
+    overflow: hidden;
+    display: inline-block;
+}
+.importance-input {
+    float: right;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    margin: 0 0 0 -64px;
+    opacity: 0;
+}
+.importance:hover .importance-label:hover,
+.importance:hover .importance-label:hover ~ .importance-label,
+.importance-input:checked ~ .importance-label {
+    background-position: 0 0;
+}
+.importance-label,
+.importance:hover .importance-label {
+    position: relative;
+    float: right;
+    display: block;
+    width: 64px;
+    height: 64px;
+    background: url('../img/lightning-bolt.png') 0 -64px;
+}
+
