@@ -1,51 +1,54 @@
-$(function() {
-    $(".edit-note").on("click", ".cancel", redirect);
+(function(notesApp) {
+    $(function() {
+        $(".cancel").on("click", notesApp.redirect);
 
-    (function loadNote(){
-        if (LocalStorage.getData('noteId') > -1) {
-            var note = TodoService.getNote(LocalStorage.getData('noteId'))
-        }
-        if (note) {
-            $.each(note, function(name, val){
-                var $el = $('[name="'+name+'"]'),
-                    type = $el.attr('type');
+        (function loadNote(){
+            if (notesApp.LocalStorage.getData('noteId') > -1) {
+                var note = notesApp.TodoService.getNote(notesApp.LocalStorage.getData('noteId'))
+            }
+            if (note) {
+                $.each(note, function(name, val){
+                    var $el = $('[name="'+name+'"]'),
+                        type = $el.attr('type');
 
-                switch(type){
-                    case 'checkbox':
-                        $el.attr('checked', 'checked');
-                        break;
-                    case 'radio':
-                        $el.filter('[value="'+val+'"]').attr('checked', 'checked');
-                        break;
-                    default:
-                        $el.val(val);
-                }
+                    switch(type){
+                        case 'checkbox':
+                            $el.attr('checked', 'checked');
+                            break;
+                        case 'radio':
+                            $el.filter('[value="'+val+'"]').attr('checked', 'checked');
+                            break;
+                        default:
+                            $el.val(val);
+                    }
+                });
+            }
+        }());
+
+        notesApp.save = function save(event) {
+            var note = {};
+            if (notesApp.LocalStorage.getData('noteId') > -1) {
+                note = notesApp.TodoService.getNote(notesApp.LocalStorage.getData('noteId'))
+            }
+            note['finished'] = false;
+            $.each($('#noteForm').serializeArray(), function (i, field) {
+                note[field.name] = field.value;
             });
-        }
-    }());
-});
 
-function save(event) {
-    var note = {}
-    if (LocalStorage.getData('noteId') > -1) {
-        note = TodoService.getNote(LocalStorage.getData('noteId'))
-    }
-    note['finished'] = false;
-    $.each($('#noteForm').serializeArray(), function (i, field) {
-        note[field.name] = field.value;
+            if (notesApp.LocalStorage.getData('noteId') > -1) {
+                notesApp.TodoService.updateNote(note);
+            } else {
+                notesApp.TodoService.addNote(note);
+            }
+
+            notesApp.redirect();
+
+            return false;
+        };
+
+        notesApp.redirect = function redirect() {
+            window.location.replace("index.html")
+        };
     });
+}(window.notesApp = window.notesApp || {}));
 
-    if (LocalStorage.getData('noteId') > -1) {
-        TodoService.updateNote(note);
-    } else {
-        TodoService.addNote(note);
-    }
-
-    redirect();
-
-    return false;
-}
-
-function redirect() {
-    window.location.replace("index.html")
-}

@@ -1,4 +1,5 @@
-var TodoService = (function () {
+(function(notesApp) {
+    notesApp.TodoService = (function () {
     var dummyNotes = [
         {
             id: '1',
@@ -30,7 +31,7 @@ var TodoService = (function () {
     ];
 
     function getHighestNotesId() {
-        var notes = TodoService.getNotes();
+        var notes = notesApp.TodoService.getNotes();
         var highestId = 0;
         $.each(notes, function (index, note){
             if(note.id > highestId) {
@@ -43,39 +44,39 @@ var TodoService = (function () {
 
     return {
         getNotes: function() {
-            var notes = LocalStorage.getData("notes");
+            var notes = notesApp.LocalStorage.getData("notes");
             if( !notes )
             {
-                LocalStorage.setData("notes", JSON.stringify(dummyNotes));
-                notes = LocalStorage.getData("notes");
+                notesApp.LocalStorage.setData("notes", JSON.stringify(dummyNotes));
+                notes = notesApp.LocalStorage.getData("notes");
             }
             console.log(JSON.parse(notes));
             return JSON.parse(notes);
         },
         setNotes: function(notes) {
-            LocalStorage.setData("notes", JSON.stringify(notes));
+            notesApp.LocalStorage.setData("notes", JSON.stringify(notes));
         },
         addNote: function(note) {
             note["id"] = Number(getHighestNotesId()) + 1;
             note["createDate"] = new Date();
-            var notes = TodoService.getNotes();
+            var notes = notesApp.TodoService.getNotes();
             notes.push(note);
-            TodoService.setNotes(notes);
+            notesApp.TodoService.setNotes(notes);
         },
         updateNote: function(note) {
-            var notes = TodoService.getNotes();
+            var notes = notesApp.TodoService.getNotes();
             for (var i = 0; i < notes.length; i++) {
-                if(LocalStorage.getData('noteId') === Number(notes[i].id)){
+                if(notesApp.LocalStorage.getData('noteId') === Number(notes[i].id)){
                     notes[i] = note;
                     break;
                 }
             }
-            TodoService.setNotes(notes);
+            notesApp.TodoService.setNotes(notes);
         },
         getNote: function(id) {
-            var notes = TodoService.getNotes();
+            var notes = notesApp.TodoService.getNotes();
             for (var i = 0; i < notes.length; i++) {
-                if(LocalStorage.getData('noteId') === Number(notes[i].id)){
+                if(notesApp.LocalStorage.getData('noteId') === Number(notes[i].id)){
                     return notes[i];
                 }
             }
@@ -83,3 +84,5 @@ var TodoService = (function () {
         }
     }
 })();
+
+}(window.notesApp = window.notesApp || {}));
