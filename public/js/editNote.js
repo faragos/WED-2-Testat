@@ -1,7 +1,5 @@
 (function(notesApp) {
     $(function() {
-        $(".cancel").on("click", notesApp.redirect);
-
         (function loadNote(){
             if (notesApp.LocalStorage.getData('noteId') > -1) {
                 var note = notesApp.TodoService.getNote(notesApp.LocalStorage.getData('noteId'))
@@ -47,8 +45,11 @@
         };
 
         notesApp.redirect = function redirect() {
-            window.location.replace("index.html")
+            window.location.replace("../index.html")
         };
+
+        $(".cancel").on("click", notesApp.redirect);
     });
 }(window.notesApp = window.notesApp || {}));
+
 
