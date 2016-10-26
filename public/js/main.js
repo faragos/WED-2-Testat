@@ -2,34 +2,19 @@
     'use strict'
 
     $(function() {
-        Handlebars.registerHelper('times', function (n, block) {
-            var accum = '';
-            for (var i = 0; i < n; ++i)
-                accum += block.fn(i);
-            return accum;
-        });
-
-        Handlebars.registerHelper("formatDate", function (datetime) {
-            if (moment) {
-                // can use other formats like 'lll' too
-                moment.locale('de');
-                return moment(datetime).format('LL');
-            }
-            else {
-                return datetime;
-            }
-        });
-
-        notesApp.currentNotes = notesApp.TodoService.getNotes();
 
 
-        var notesTemplateText = $('#notesTemplateText').html();
-        var createNotesHtml = Handlebars.compile(notesTemplateText);
+        getNotes();
 
-        renderNotes();
+        function getNotes() {
+            $.get("/notes", function (notes) {
+                renderNotes(notes);
+            });
+        }
 
-        $(".sort").on("click", "input", sortNotes);
-        $(".filter").on("click", "input", filterNotes);
+
+        $(".sort").on("click", "input", getNotes);
+        $(".filter").on("click", "input", getNotes);
         $(".theme").on("change", "select", notesApp.changeTheme);
         $("header").on("click", ".add-button", addNote);
 
@@ -56,41 +41,28 @@
             return i1.importance < i2.importance;
         }
 
-        function filterNotes() {
+        function renderNotes(notes) {
             if ($('#filter-by-finished:checked').length > 0) {
-                notesApp.currentNotes = $.grep(notesApp.TodoService.getNotes(), function (note) {
-                    return note.finished === true;
+                notes = $.grep(notes, function (note) {
+                    return note.finished;
                 });
-            } else {
-                notesApp.currentNotes = notesApp.TodoService.getNotes();
             }
 
-            $(".content").html(createNotesHtml(notesApp.currentNotes));
-        }
-
-        function sortNotes() {
             if ($('#sort-by-finish-date:checked').length > 0) {
-                notesApp.currentNotes = notesApp.currentNotes.sort(compareFinishDate);
+                notes = notes.sort(compareFinishDate);
             } else if ($('#sort-by-created-date:checked').length > 0) {
-                notesApp.currentNotes = notesApp.currentNotes.sort(compareCreateDate);
+                notes = notes.sort(compareCreateDate);
             } else if ($('#sort-by-importance:checked').length > 0) {
-                notesApp.currentNotes = notesApp.currentNotes.sort(compareImportance);
+                notes = notes.sort(compareImportance);
             }
-            $(".content").html(createNotesHtml(notesApp.currentNotes));
-        }
 
-        function renderNotes() {
-            filterNotes();
-            sortNotes();
+            $.post( "/notes", { data: JSON.stringify(notes) } ).done(function( data ) {
+                $(".content").html(data);
+            });
         }
 
         notesApp.redirect = function redirect() {
-            window.location= '../html/noteForm.html';
-        };
-
-        notesApp.editNote = function editNote(id) {
-            notesApp.LocalStorage.setData("noteId", id);
-            notesApp.redirect();
+            window.location= '/noteForm';
         };
     });
 }(window.notesApp = window.notesApp || {}));

@@ -41,6 +41,9 @@ button, select {
 
 .note-description {
     margin-right: 30px;
+    display: inline-block;
+    width: 400px;
+    vertical-align: top;
 }
 
 .importance {
@@ -119,7 +122,6 @@ button, select {
 .edit-note input {
     display: block;
 }
-
 
 .importance {
     overflow: hidden;

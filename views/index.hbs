@@ -1,2 +1,46 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Notizverwaltung</title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script language="javascript"
+                src="http://code.jquery.com/jquery-2.2.3.min.js">
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <form class="box">
+                    <div class="width-70">
+                        <input type="button" class="add-button" value="Create new Note">
+                        <nav class="sort">
+                            <label><input type="radio" id="sort-by-finish-date" name="sort-by" checked><span>By finish Date</span></label>
+                            <label><input type="radio" id="sort-by-created-date" name="sort-by"><span>By create Date</span></label>
+                            <label><input type="radio" id="sort-by-importance" name="sort-by"><span>By Importance</span></label>
+                        </nav>
+                    </div>
+                    <div class="width-30">
+                        <div class="theme">
+                            <select>
+                                <option value="classic-theme">Classic-Theme</option>
+                                <option value="night-theme">Night-Theme</option>
+                            </select>
+                        </div>
+                        <div class="filter">
+                            <label><input type="checkbox"  id="filter-by-finished"><span>Hide finished</span></label>
+                        </div>
+                    </div>
+                </form>
+            </header>
+            <div class="content">
+
+            </div>
+            <footer></footer>
+        </div>
+        <script language="javascript" src="../js/localStorage.js"></script>
+        <script language="javascript" src="../js/util.js"></script>
+        <script language="javascript" src="../js/main.js"></script>
+    </body>
+</html>
+
