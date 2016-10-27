@@ -25,6 +25,13 @@ module.exports.notesData = function(req, res, next) {
     });
 };
 
+module.exports.modifyNotesData = function(req, res, next) {
+    todoService.getModifyNotes(req.body.sortBy, req.body.filterBy, function(err, notes) {
+        res.render("notes", notes);
+    });
+};
+
+
 module.exports.renderNotes = function(req, res, next) {
     res.render("notes", JSON.parse(req.body.data));
 };

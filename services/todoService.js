@@ -1,22 +1,35 @@
 var Datastore = require('nedb');
 var db = new Datastore({ filename: '../data/notes.db', autoload: true });
 
-
-function privateGetHighestNotesId() {
-    var notes = publicGetNotes();
-    var highestId = 0;
-    $.each(notes, function (index, note){
-        if(note.id > highestId) {
-            highestId = note.id;
-        }
-    });
-    return highestId;
-}
-
 function publicGetNotes(callback) {
     db.find({}, function (err, docs) {
         callback(err, docs);
     });
+}
+
+function publicGetModifyNotes(sortBy, filterBy, callback) {
+
+    if(sortBy && filterBy){
+        sortBy = JSON.parse('{\"'+sortBy+'\": 1}');
+        filterBy = JSON.parse('{\"'+filterBy+'\": "on"}');
+        db.find(filterBy).sort(sortBy).exec(function (err, docs) {
+            callback(err, docs);
+        });
+    } else if(filterBy) {
+        filterBy = JSON.parse('{\"'+filterBy+'\": "on"}');
+        db.find(filterBy, function (err, docs) {
+            callback(err, docs);
+        });
+    } else if(sortBy) {
+        sortBy = JSON.parse('{\"'+sortBy+'\": 1}');
+        db.find({}).sort(sortBy).exec(function (err, docs) {
+            callback(err, docs);
+        });
+    } else {
+        db.find({}, function (err, docs) {
+            callback(err, docs);
+        });
+    }
 }
 
 function publicAddNote(note) {
@@ -42,6 +55,7 @@ function publicGetNote(id, callback) {
 
 module.exports = {
     getNotes: publicGetNotes,
+    getModifyNotes: publicGetModifyNotes,
     addNote: publicAddNote,
     updateNote: publicUpdateNote,
     getNote: publicGetNote

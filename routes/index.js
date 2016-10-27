@@ -10,6 +10,6 @@ router.put('/noteForm/:id', notes.updateNote);
 router.post('/noteForm/', notes.addNote);
 
 router.get('/notes', notes.notesData);
-router.post('/notes', notes.renderNotes);
+router.post('/notes', notes.modifyNotesData);
 
 module.exports = router;

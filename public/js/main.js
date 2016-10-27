@@ -1,20 +1,22 @@
 (function(notesApp) {
-    'use strict'
+    'use strict';
 
     $(function() {
 
 
-        getNotes();
+        renderNotes();
 
+/*
         function getNotes() {
             $.get("/notes", function (notes) {
                 renderNotes(notes);
             });
         }
+*/
 
 
-        $(".sort").on("click", "input", getNotes);
-        $(".filter").on("click", "input", getNotes);
+        $(".sort").on("click", "input", renderNotes);
+        $(".filter").on("click", "input", renderNotes);
         $(".theme").on("change", "select", notesApp.changeTheme);
         $("header").on("click", ".add-button", addNote);
 
@@ -41,22 +43,31 @@
             return i1.importance < i2.importance;
         }
 
-        function renderNotes(notes) {
-            if ($('#filter-by-finished:checked').length > 0) {
-                notes = $.grep(notes, function (note) {
-                    return note.finished;
-                });
+        function sortNotes() {
+            renderNotes();
+        }
+
+        function filterNotes() {
+            if ($('#sort-by-finish-date:checked').length > 0) {
+                notesApp.filterBy = "finished";
+            }
+            renderNotes();
+        }
+
+        function renderNotes() {
+            if ($('#sort-by-finish-date:checked').length > 0) {
+                notesApp.filterBy = "finished";
             }
 
             if ($('#sort-by-finish-date:checked').length > 0) {
-                notes = notes.sort(compareFinishDate);
+                notesApp.sortBy = "finishDate";
             } else if ($('#sort-by-created-date:checked').length > 0) {
-                notes = notes.sort(compareCreateDate);
+                notesApp.sortBy = "createDate";
             } else if ($('#sort-by-importance:checked').length > 0) {
-                notes = notes.sort(compareImportance);
+                notesApp.sortBy = "importance";
             }
 
-            $.post( "/notes", { data: JSON.stringify(notes) } ).done(function( data ) {
+            $.post( "/notes",{sortBy: notesApp.sortBy, filterBy: notesApp.filterBy}).done(function( data ) {
                 $(".content").html(data);
             });
         }
