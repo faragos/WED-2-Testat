@@ -1,8 +1,12 @@
-html, img, video {
-    -webkit-filter: invert(0.9) hue-rotate(170deg);
-    filter: invert(0.9) hue-rotate(170deg);
-}
-
 body {
     background: #444444;
+    color: white;
+}
+
+.sort label span, .filter label span, .edit-button {
+    background-color: gray;
+}
+
+.container {
+    background-color: #777;
 }

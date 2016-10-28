@@ -18,7 +18,7 @@
         $(".sort").on("click", "input", renderNotes);
         $(".filter").on("click", "input", renderNotes);
         $(".theme").on("change", "select", notesApp.changeTheme);
-        $("header").on("click", ".add-button", addNote);
+        $("header").on("click", ".addButton", addNote);
 
         function addNote() {
             notesApp.LocalStorage.setData("noteId", -1);
@@ -48,22 +48,26 @@
         }
 
         function filterNotes() {
-            if ($('#sort-by-finish-date:checked').length > 0) {
+            if ($('#sortByFinishDate:checked').length > 0) {
                 notesApp.filterBy = "finished";
+            } else {
+                notesApp.filterBy = null;
             }
             renderNotes();
         }
 
         function renderNotes() {
-            if ($('#sort-by-finish-date:checked').length > 0) {
+            if ($('#filterByFinished:checked').length > 0) {
                 notesApp.filterBy = "finished";
+            } else {
+                notesApp.filterBy = null;
             }
 
-            if ($('#sort-by-finish-date:checked').length > 0) {
+            if ($('#sortByFinishDate:checked').length > 0) {
                 notesApp.sortBy = "finishDate";
-            } else if ($('#sort-by-created-date:checked').length > 0) {
+            } else if ($('#sortByCreatedDate:checked').length > 0) {
                 notesApp.sortBy = "createDate";
-            } else if ($('#sort-by-importance:checked').length > 0) {
+            } else if ($('#sortByImportance:checked').length > 0) {
                 notesApp.sortBy = "importance";
             }
 

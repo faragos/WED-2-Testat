@@ -10,18 +10,18 @@ function publicGetNotes(callback) {
 function publicGetModifyNotes(sortBy, filterBy, callback) {
 
     if(sortBy && filterBy){
-        sortBy = JSON.parse('{\"'+sortBy+'\": 1}');
-        filterBy = JSON.parse('{\"'+filterBy+'\": "on"}');
+        sortBy = JSON.parse('{\"'+sortBy+'\": -1}');
+        filterBy = JSON.parse('{\"'+filterBy+'\": false}');
         db.find(filterBy).sort(sortBy).exec(function (err, docs) {
             callback(err, docs);
         });
     } else if(filterBy) {
-        filterBy = JSON.parse('{\"'+filterBy+'\": "on"}');
+        filterBy = JSON.parse('{\"'+filterBy+'\": false}');
         db.find(filterBy, function (err, docs) {
             callback(err, docs);
         });
     } else if(sortBy) {
-        sortBy = JSON.parse('{\"'+sortBy+'\": 1}');
+        sortBy = JSON.parse('{\"'+sortBy+'\": -1}');
         db.find({}).sort(sortBy).exec(function (err, docs) {
             callback(err, docs);
         });

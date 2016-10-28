@@ -6,7 +6,7 @@ function Note(title, description, finishDate, importance, finished)
     this.description = description;
     this.finishDate = finishDate;
     this.importance = importance;
-    this.finished = finished;
+    this.finished = finished ? true : false;
 }
 
 module.exports.showIndex = function(req, res, next) {
@@ -48,7 +48,7 @@ module.exports.updateNote = function(req, res, next) {
         note.description = req.body.description;
         note.finishDate = req.body.finishDate;
         note.importance = req.body.importance;
-        note.finished = req.body.finished;
+        note.finished = req.body.finished  ? true : false;
         todoService.updateNote(note);
     });
     res.redirect("/")

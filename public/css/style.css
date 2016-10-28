@@ -5,17 +5,23 @@
 .container  {
     width: 1280px;
     margin: 0 auto;
+    background-color: #eee;
+    padding: 15px;
 }
 
 .box {
     display: flex;
 }
 
-.width-70 {
+main,
+.noteInfo,
+.note-text {
     width: 70%;
 }
 
-.width-30 {
+aside,
+.editButtonHolder,
+.noteDates {
     width: 30%;
 }
 
@@ -31,18 +37,18 @@ button, select {
     margin-bottom: 10px;
 }
 
-.edit-button {
+.editButton {
     width: 50px;
     height: 50px;
 }
-.edit-button-holder {
+.editButtonHolder {
     align-items: center;
 }
 
-.note-description {
+.noteDescription {
     margin-right: 30px;
     display: inline-block;
-    width: 400px;
+    max-width: 400px;
     vertical-align: top;
 }
 
@@ -66,68 +72,91 @@ button, select {
     margin:4px;
     background-color:#EFEFEF;
     border-radius:4px;
-    border:1px solid #D0D0D0;
-    overflow:auto;
+    border: 1px solid #D0D0D0;
+    overflow: auto;
 }
 
 .filter label span {
-    text-align:center;
-    padding:13px 0px;
-    display:block;
+    text-align: center;
+    padding: 13px 0px;
+    display: block;
 }
 
+/* Input button verstecken */
 .filter input {
     position:absolute;
     top:-20px;
 }
 
-.filter input:checked + span {
-    background-color:#911;
-    color:#fff;
-}
-
 /* Radiobuttons */
 
 .sort {
-    margin:4px;
-    display:flex;
+    margin: 4px;
+    display: flex;
 }
 
 .sort label {
-    width:170px;
-    margin:4px;
-    background-color:#EFEFEF;
+    width: 170px;
+    margin: 4px;
+    background-color: #EFEFEF;
     border:1px solid #D0D0D0;
-    border-radius:4px;
-
+    border-radius: 4px;
 }
 
 .sort label span {
-    text-align:center;
-    font-size: 16px;
-    padding:13px 0px;
-    display:block;
-}
-
-.sort label input {
-    position:absolute;
-    top:-20px;
-}
-
-.sort input:checked + span {
-    background-color:#404040;
-    color:#F7F7F7;
-}
-
-.edit-note input {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 13px 0px;
     display: block;
+}
+
+
+/* Input button verstecken */
+.sort label input {
+    position: absolute;
+    top: -20px;
+}
+
+.sort input:checked + span,
+.filter input:checked + span {
+    background-color: #911;
+    color: #F7F7F7;
+}
+
+.editNote input {
+    display: block;
+}
+
+.editNote #title,
+.editNote #finishDate,
+.editNote #description{
+    width: 200px;
+}
+
+
+.editNote label {
+    margin-top: 10px;
+    display: block;
+}
+
+.editNote .save,
+.editNote .cancel,
+.editButton,
+.addButton {
+    width:170px;
+    margin:4px;
+    background-color: #ccc;
+    border:1px solid #D0D0D0;
+    border-radius:4px;
+    display: inline-block;
+    padding: 4px;
 }
 
 .importance {
     overflow: hidden;
     display: inline-block;
 }
-.importance-input {
+.importanceInput {
     float: right;
     width: 64px;
     height: 64px;
@@ -135,13 +164,13 @@ button, select {
     margin: 0 0 0 -64px;
     opacity: 0;
 }
-.importance:hover .importance-label:hover,
-.importance:hover .importance-label:hover ~ .importance-label,
-.importance-input:checked ~ .importance-label {
+.importance:hover .importanceLabel:hover,
+.importance:hover .importanceLabel:hover ~ .importanceLabel,
+.importanceInput:checked ~ .importanceLabel {
     background-position: 0 0;
 }
-.importance-label,
-.importance:hover .importance-label {
+.importanceLabel,
+.importance:hover .importanceLabel {
     position: relative;
     float: right;
     display: block;

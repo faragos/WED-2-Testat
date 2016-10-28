@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
-<div class="container edit-note">
+<div class="container editNote">
     <form id="noteForm" action='/noteForm/{{_id}}' method='post'>
         {{#if _id}}
             <input type='hidden' name='_method'  value='put'>
@@ -22,16 +22,16 @@
         <input name="finishDate" id="finishDate" type="date" required value="{{finishDate}}" />
 
         <span class="importance">
-            <input type="radio" name="importance" value="5" id="importance-input-1-5" class="importance-input" {{#ifEquals importance "5"}} checked {{/ifEquals}} />
-            <label for="importance-input-1-5" class="importance-label"></label>
-            <input type="radio" name="importance" value="4" id="importance-input-1-4" class="importance-input" {{#ifEquals importance "4"}} checked {{/ifEquals}} />
-            <label for="importance-input-1-4" class="importance-label"></label>
-            <input type="radio" name="importance" value="3" id="importance-input-1-3" class="importance-input" {{#ifEquals importance "3"}} checked {{/ifEquals}} />
-            <label for="importance-input-1-3" class="importance-label"></label>
-            <input type="radio" name="importance" value="2" id="importance-input-1-2" class="importance-input" {{#ifEquals importance "2"}} checked {{/ifEquals}} />
-            <label for="importance-input-1-2" class="importance-label"></label>
-            <input type="radio" name="importance" value="1" id="importance-input-1-1" class="importance-input" {{#ifEquals importance "1"}} checked {{/ifEquals}} />
-            <label for="importance-input-1-1" class="importance-label"></label>
+            <input type="radio" name="importance" value="5" id="importanceInput_1_5" class="importanceInput" {{#ifEquals importance "5"}} checked {{/ifEquals}} />
+            <label for="importanceInput_1_5" class="importanceLabel"></label>
+            <input type="radio" name="importance" value="4" id="importanceInput_1_4" class="importanceInput" {{#ifEquals importance "4"}} checked {{/ifEquals}} />
+            <label for="importanceInput_1_4" class="importanceLabel"></label>
+            <input type="radio" name="importance" value="3" id="importanceInput_1_3" class="importanceInput" {{#ifEquals importance "3"}} checked {{/ifEquals}} />
+            <label for="importanceInput_1_3" class="importanceLabel"></label>
+            <input type="radio" name="importance" value="2" id="importanceInput_1_2" class="importanceInput" {{#ifEquals importance "2"}} checked {{/ifEquals}} />
+            <label for="importanceInput_1_2" class="importanceLabel"></label>
+            <input type="radio" name="importance" value="1" id="importanceInput_1_1" class="importanceInput" {{#ifEquals importance "1"}} checked {{/ifEquals}} />
+            <label for="importanceInput_1_1" class="importanceLabel"></label>
         </span>
 
         <br>

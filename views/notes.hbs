@@ -1,26 +1,22 @@
 {{#each this}}
     {{#if _id}}
     <article class="box">
-        <div class="width-70 box">
-            <div class="width-30">
+        <div class="noteInfo box">
+            <div class="noteDates">
                 <h4>{{formatDate createDate }}</h4>
                 <input id="finished{{id}}" {{#if finished}}checked{{/if}} type="checkbox" disabled>
                 <label for="finished{{id}}">Finished  [ <time>{{formatDate finishDate }}</time> ]</label>
             </div>
-            <div class="width-70">
-                <h4 class="note-title">
-                    {{ title }}
-                </h4>
-                <div class="note-description">
-                    {{ description }}
-                </div>
+            <div class="noteText">
+                <h4 class="noteTitle">{{ title }}</h4>
+                <div class="noteDescription">{{ description }}</div>
                 {{#times importance}}
                     <span class="importance"><img src="../img/lightning-bolt.svg"></span>
                 {{/times}}
             </div>
         </div>
-        <div class="edit-button-holder width-30 box">
-            <a href="/noteForm/{{ _id }}"><button class="edit-button">Edit</button></a>
+        <div class="editButtonHolder box">
+            <a href="/noteForm/{{ _id }}"><button class="editButton">Edit</button></a>
         </div>
     </article>
     {{/if}}
