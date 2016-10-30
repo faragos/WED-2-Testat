@@ -3,7 +3,7 @@
     <article class="box">
         <div class="noteInfo box">
             <div class="noteDates">
-                <h4>{{formatDate createDate }}</h4>
+                <h4>Created: {{formatDate createDate }}</h4>
                 <input id="finished{{id}}" {{#if finished}}checked{{/if}} type="checkbox" disabled>
                 <label for="finished{{id}}">Finished  [ <time>{{formatDate finishDate }}</time> ]</label>
             </div>

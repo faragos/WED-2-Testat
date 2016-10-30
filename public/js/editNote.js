@@ -1,4 +1,5 @@
-(function(notesApp) {
+(function(notesApp, $) {
+    'use strict';
     $(function() {
 
         notesApp.redirect = function redirect() {
@@ -7,6 +8,6 @@
 
         $(".cancel").on("click", notesApp.redirect);
     });
-}(window.notesApp = window.notesApp || {}));
+}(window.notesApp = window.notesApp || {}, jQuery));
 
 

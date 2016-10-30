@@ -13,41 +13,40 @@
         {{/if}}
 
         <label for="title">Title</label>
-        <input name="title" id="title" type="text" required value="{{title}}"  />
+        <input name="title" id="title" type="text" required value="{{title}}" >
 
         <label for="description">Description</label>
-        <input name="description" id="description" type="text" value="{{description}}" />
+        <textarea name="description" id="description">{{description}}</textarea>
 
         <label for="finishDate">Finish Date</label>
-        <input name="finishDate" id="finishDate" type="date" required value="{{finishDate}}" />
+        <input name="finishDate" id="finishDate" type="date" required value="{{finishDate}}" >
 
         <span class="importance">
-            <input type="radio" name="importance" value="5" id="importanceInput_1_5" class="importanceInput" {{#ifEquals importance "5"}} checked {{/ifEquals}} />
+            <input type="radio" name="importance" value="5" id="importanceInput_1_5" class="importanceInput" {{#ifEquals importance "5"}} checked {{/ifEquals}}>
             <label for="importanceInput_1_5" class="importanceLabel"></label>
-            <input type="radio" name="importance" value="4" id="importanceInput_1_4" class="importanceInput" {{#ifEquals importance "4"}} checked {{/ifEquals}} />
+            <input type="radio" name="importance" value="4" id="importanceInput_1_4" class="importanceInput" {{#ifEquals importance "4"}} checked {{/ifEquals}}>
             <label for="importanceInput_1_4" class="importanceLabel"></label>
-            <input type="radio" name="importance" value="3" id="importanceInput_1_3" class="importanceInput" {{#ifEquals importance "3"}} checked {{/ifEquals}} />
+            <input type="radio" name="importance" value="3" id="importanceInput_1_3" class="importanceInput" {{#ifEquals importance "3"}} checked {{/ifEquals}}>
             <label for="importanceInput_1_3" class="importanceLabel"></label>
-            <input type="radio" name="importance" value="2" id="importanceInput_1_2" class="importanceInput" {{#ifEquals importance "2"}} checked {{/ifEquals}} />
+            <input type="radio" name="importance" value="2" id="importanceInput_1_2" class="importanceInput" {{#ifEquals importance "2"}} checked {{/ifEquals}}>
             <label for="importanceInput_1_2" class="importanceLabel"></label>
-            <input type="radio" name="importance" value="1" id="importanceInput_1_1" class="importanceInput" {{#ifEquals importance "1"}} checked {{/ifEquals}} />
+            <input type="radio" name="importance" value="1" id="importanceInput_1_1" class="importanceInput" {{#ifEquals importance "1"}} checked {{/ifEquals}}>
             <label for="importanceInput_1_1" class="importanceLabel"></label>
         </span>
 
         <br>
 
         <label for="finished">Finished</label>
-        <input name="finished" id="finished" type="checkbox" {{#if finished}}checked{{/if}}  />
+        <input name="finished" id="finished" type="checkbox" {{#if finished}}checked{{/if}}>
 
         <input class="save" type="submit" value="Save">
-        <input class="cancel" type="button" value="Cancel">
+        <input class="cancel" type="reset" value="Cancel">
     </form>
 </div>
-<script language="javascript"
-        src="http://code.jquery.com/jquery-2.2.3.min.js">
+<script src="http://code.jquery.com/jquery-2.2.3.min.js">
 </script>
-<script language="javascript" src="../js/localStorage.js"></script>
-<script language="javascript" src="../js/util.js"></script>
-<script language="javascript" src="../js/editNote.js"></script>
+<script src="../js/localStorage.js"></script>
+<script src="../js/util.js"></script>
+<script  src="../js/editNote.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
-(function(notesApp) {
+(function(notesApp, $) {
+    'use strict';
     notesApp.changeTheme = function changeTheme() {
         var themeName = $('.theme select').val();
         var cssId = 'night-theme';
@@ -39,4 +40,4 @@
         notesApp.loadTheme();
     });
 
-}(window.notesApp = window.notesApp || {}));
+}(window.notesApp = window.notesApp || {}, jQuery));

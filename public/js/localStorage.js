@@ -1,4 +1,5 @@
-(function(notesApp) {
+(function(notesApp, $) {
+    'use strict';
     notesApp.LocalStorage = (function () {
 
         return {
@@ -14,4 +15,4 @@
             }
         }
     })();
-}(window.notesApp = window.notesApp || {}));
+}(window.notesApp = window.notesApp || {}, jQuery));
