@@ -1,5 +1,5 @@
 (function(notesApp, $) {
-    'use strict';
+    "use strict";
     notesApp.LocalStorage = (function () {
 
         return {

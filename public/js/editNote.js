@@ -1,9 +1,9 @@
-(function(notesApp, $) {
-    'use strict';
-    $(function() {
+(function (notesApp, $) {
+    "use strict";
+    $(function () {
 
         notesApp.redirect = function redirect() {
-            window.location= '/';
+            window.location = '/';
         };
 
         $(".cancel").on("click", notesApp.redirect);

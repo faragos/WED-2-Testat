@@ -1,12 +1,7 @@
-(function(notesApp, $) {
-    'use strict';
+(function (notesApp, $) {
+    "use strict";
 
-    $(function() {
-
-
-        renderNotes();
-
-
+    $(function () {
         $(".sort").on("click", "input", renderNotes);
         $(".filter").on("click", "input", renderNotes);
         $(".theme").on("change", "select", notesApp.changeTheme);
@@ -16,33 +11,32 @@
             notesApp.redirect();
         }
 
-        function sortNotes() {
-            renderNotes();
-        }
-
-
         function renderNotes() {
             if ($('#filterByFinished:checked').length > 0) {
-                notesApp.filterBy = "finished";
-            } else {
                 notesApp.filterBy = null;
+            } else {
+                notesApp.filterBy = {finished: false};
             }
 
             if ($('#sortByFinishDate:checked').length > 0) {
-                notesApp.sortBy = "finishDate";
+                notesApp.sortBy = {finishDate: -1};
             } else if ($('#sortByCreatedDate:checked').length > 0) {
-                notesApp.sortBy = "createDate";
+                notesApp.sortBy = {createDate: -1};
             } else if ($('#sortByImportance:checked').length > 0) {
-                notesApp.sortBy = "importance";
+                notesApp.sortBy = {importance: -1};
             }
 
-            $.post( "/notes",{sortBy: notesApp.sortBy, filterBy: notesApp.filterBy}).done(function( data ) {
+            $.post( "/notes", {sortBy: JSON.stringify(notesApp.sortBy), filterBy: JSON.stringify(notesApp.filterBy)}).done(function (data) {
+
                 $("main").html(data);
             });
         }
 
+        renderNotes();
+
+
         notesApp.redirect = function redirect() {
-            window.location= '/noteForm';
+            window.location = '/noteForm';
         };
     });
 }(window.notesApp = window.notesApp || {}, jQuery));

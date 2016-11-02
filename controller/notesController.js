@@ -1,7 +1,6 @@
 var todoService = require("../services/todoService.js");
 
-function Note(title, description, finishDate, importance, finished)
-{
+function Note(title, description, finishDate, importance, finished) {
     this.title = title;
     this.description = description;
     this.finishDate = finishDate;
@@ -39,7 +38,7 @@ module.exports.renderNotes = function(req, res, next) {
 module.exports.addNote = function(req, res, next) {
     var note = new Note(req.body.title, req.body.description, req.body.finishDate, req.body.importance, req.body.finished);
     todoService.addNote(note);
-    res.redirect("/")
+    res.redirect("/");
 };
 
 module.exports.updateNote = function(req, res, next) {
@@ -48,8 +47,8 @@ module.exports.updateNote = function(req, res, next) {
         note.description = req.body.description;
         note.finishDate = req.body.finishDate;
         note.importance = req.body.importance;
-        note.finished = req.body.finished  ? true : false;
+        note.finished = req.body.finished ? true : false;
         todoService.updateNote(note);
     });
-    res.redirect("/")
+    res.redirect("/");
 };
