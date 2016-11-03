@@ -1,4 +1,4 @@
-(function (notesApp, $) {
+;(function (notesApp, $) {
     "use strict";
     $(function () {
 

@@ -1,4 +1,4 @@
-(function (notesApp, $) {
+;(function (notesApp, $) {
     "use strict";
     notesApp.changeTheme = function changeTheme() {
         var themeName = $(".theme select").val();
