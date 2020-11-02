@@ -35,13 +35,13 @@ export class NotesStore {
     }
     addNote(note) {
         return __awaiter(this, void 0, void 0, function* () {
-            note['createDate'] = new Date();
+            note.createDate = new Date();
             return this.db.insert(note);
         });
     }
     updateNote(note) {
         return __awaiter(this, void 0, void 0, function* () {
-            let doc = yield notesStore.getNote(note._id);
+            const doc = yield notesStore.getNote(note._id);
             this.db.update(doc, note, {});
         });
     }

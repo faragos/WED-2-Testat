@@ -22,7 +22,7 @@ export class NotesController {
 
     showNoteForm = async function (req, res) {
         if (req.params.id) {
-            let note = await notesStore.getNote(req.params.id)
+            const note = await notesStore.getNote(req.params.id)
             res.render('noteForm', {note, theme: req.userSettings.theme})
         } else {
             res.render('noteForm', {note: {}, theme: req.userSettings.theme})
@@ -30,13 +30,13 @@ export class NotesController {
     }
 
     addNote = async function (req, res) {
-        let note = new Note(req.body.title, req.body.description, req.body.finishDate, req.body.importance, !!req.body.finished)
+        const note = new Note(req.body.title, req.body.description, req.body.finishDate, req.body.importance, !!req.body.finished)
         await notesStore.addNote(note)
         res.redirect('/')
     }
 
     updateNote = async function (req, res) {
-        let note: Note = await notesStore.getNote(req.params.id)
+        const note: Note = await notesStore.getNote(req.params.id)
         note.title = req.body.title
         note.description = req.body.description
         note.finishDate = req.body.finishDate

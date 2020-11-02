@@ -38,7 +38,7 @@ export class NotesController {
         this.showNoteForm = function (req, res) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (req.params.id) {
-                    let note = yield notesStore.getNote(req.params.id);
+                    const note = yield notesStore.getNote(req.params.id);
                     res.render('noteForm', { note, theme: req.userSettings.theme });
                 }
                 else {
@@ -48,14 +48,14 @@ export class NotesController {
         };
         this.addNote = function (req, res) {
             return __awaiter(this, void 0, void 0, function* () {
-                let note = new Note(req.body.title, req.body.description, req.body.finishDate, req.body.importance, !!req.body.finished);
+                const note = new Note(req.body.title, req.body.description, req.body.finishDate, req.body.importance, !!req.body.finished);
                 yield notesStore.addNote(note);
                 res.redirect('/');
             });
         };
         this.updateNote = function (req, res) {
             return __awaiter(this, void 0, void 0, function* () {
-                let note = yield notesStore.getNote(req.params.id);
+                const note = yield notesStore.getNote(req.params.id);
                 note.title = req.body.title;
                 note.description = req.body.description;
                 note.finishDate = req.body.finishDate;

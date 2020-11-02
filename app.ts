@@ -41,7 +41,7 @@ const sessionUserSettings = (req, res, next) => {
   next()
 }
 
-let app = express()
+const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cookieParser())
@@ -83,7 +83,7 @@ hbs.registerHelper('ifEquals', function (v1, v2, options) {
 
 app.use(methodOverride(function (req, res) {
   if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-    let method = req.body._method
+    const method = req.body._method
     delete req.body._method
     return method
   }

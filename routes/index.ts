@@ -1,7 +1,7 @@
 import express from 'express'
-import { notesController } from '../controller/notesController.js'
+import {notesController} from '../controller/notesController.js'
 
-let router = express.Router()
+const router = express.Router()
 
 router.get('/', notesController.showIndex)
 router.post('/', notesController.showIndex)

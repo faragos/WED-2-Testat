@@ -25,12 +25,12 @@ export class NotesStore {
   }
 
   async addNote(note) {
-    note['createDate'] = new Date()
+    note.createDate = new Date()
     return this.db.insert(note)
   }
 
   async updateNote(note) {
-    let doc = await notesStore.getNote(note._id)
+    const doc = await notesStore.getNote(note._id)
     this.db.update(doc, note, {})
   }
 
