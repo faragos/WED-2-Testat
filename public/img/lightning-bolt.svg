@@ -1,0 +1,35 @@
+<?xml version="1.0"?><svg width="800" height="800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>Black Lightning Bolt</title>
+ <defs>
+  <linearGradient id="linearGradient1709">
+   <stop id="stop1710" offset="0" stop-color="#ffcd00"/>
+   <stop id="stop1711" offset="1" stop-color="#ff0000"/>
+  </linearGradient>
+  <linearGradient id="linearGradient4728">
+   <stop id="stop4729" offset="0" stop-color="#eefb11"/>
+   <stop id="stop4730" offset="1" stop-color="#fbcd11"/>
+  </linearGradient>
+  <linearGradient gradientTransform="scale(1.395076,0.716807)" gradientUnits="userSpaceOnUse" id="linearGradient4844" x1="33.8312" x2="33.8312" xlink:href="#linearGradient4140" y1="32.14064" y2="47.052849"/>
+  <linearGradient id="linearGradient4140">
+   <stop id="stop4141" offset="0" stop-color="#ffffff"/>
+   <stop id="stop4142" offset="1" stop-opacity="0" stop-color="#fffcfc"/>
+  </linearGradient>
+  <linearGradient gradientTransform="scale(1.395076,0.716807)" gradientUnits="userSpaceOnUse" id="linearGradient4843" x1="33.713825" x2="33.770935" xlink:href="#linearGradient4140" y1="32.828346" y2="45.81908"/>
+  <linearGradient id="linearGradient4830">
+   <stop id="stop4831" offset="0" stop-color="#000000"/>
+   <stop id="stop4832" offset="1" stop-opacity="0" stop-color="#000000"/>
+  </linearGradient>
+  <linearGradient gradientTransform="scale(0.960291,1.041351)" gradientUnits="userSpaceOnUse" id="linearGradient4842" x1="24.699118" x2="62.643452" xlink:href="#linearGradient4830" y1="20.796894" y2="53.925991"/>
+  <linearGradient gradientTransform="scale(0.960882,1.040710)" gradientUnits="userSpaceOnUse" id="linearGradient4731" x1="40.586456" x2="46.952221" xlink:href="#linearGradient4728" y1="33.980247" y2="37.406559"/>
+  <radialGradient cx="41.217018" cy="36.04406" fx="42.015064" fy="36.314224" gradientUnits="userSpaceOnUse" id="radialGradient1712" r="26.079197" xlink:href="#linearGradient1709"/>
+  <radialGradient cx="41.217018" cy="36.04406" fx="42.015064" fy="36.314224" gradientUnits="userSpaceOnUse" id="radialGradient1718" r="26.079197" xlink:href="#linearGradient1709"/>
+  <linearGradient id="linearGradient1719" x1="-0.042017" x2="0.92437" xlink:href="#linearGradient4830" y1="0.039062" y2="0.882813"/>
+  <linearGradient id="linearGradient1720" x1="0.49004" x2="0.494024" xlink:href="#linearGradient4140" y1="-Infinity" y2="Infinity"/>
+  <linearGradient id="linearGradient1721" x1="0.498228" x2="0.498228" xlink:href="#linearGradient4140" y1="-Infinity" y2="Infinity"/>
+  <linearGradient id="linearGradient1722" x1="0.384734" x2="0.54696" xlink:href="#linearGradient4728" y1="0.404862" y2="0.492072"/>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <path d="m516.068542,31.096121l-302.651489,293.798319l163.138367,5.42804l-258.84491,245.117218l109.63501,1.948608l-181.662659,191.231628l438.948608,-233.261475l-163.395935,1.642212l330.746643,-251.655212l-178.907227,-0.419861l293.950684,-261.672438l-250.957092,7.84296z" id="path4828" stroke-width="0" stroke="#ff0000" fill-rule="evenodd" fill="#000000"/>
+ </g>
+</svg>

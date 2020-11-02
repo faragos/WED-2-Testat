@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #eee;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.box,
+.sort-options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.configurations,
+.note-info,
+.note-text {
+    width: 70%;
+}
+
+article {
+    border: 1px dashed #aaa;
+    padding: 10px;
+}
+
+aside, .edit-button-holder {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.sort-label {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.empty-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+.empty-message button {
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+
+.empty-message form {
+    display: flex;
+    justify-content: center;
+}
+
+aside,
+.edit-button-holder,
+.note-dates {
+    width: 30%;
+}
+
+.edit-button-holder {
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    margin-right: 20px;
+}
+
+button, select {
+    margin-bottom: 10px;
+}
+
+.note-description {
+    display: inline-block;
+    max-width: 400px;
+    vertical-align: top;
+}
+
+.importance {
+    margin-top: 15px;
+}
+
+.importance-element {
+    color: #ff0000;
+    font-size: 30px;
+}
+
+.importance img {
+    max-height: 30px;
+}
+
+.hide-finished-button, .show-finished-button {
+    background-color: #911;
+    color: #F7F7F7;
+}
+
+.edit-note input {
+    display: block;
+}
+
+.edit-note #title,
+.edit-note #finish-date,
+.edit-note #description {
+    width: 200px;
+}
+
+
+.edit-note label {
+    margin-top: 10px;
+    display: block;
+}
+
+button,
+input[type="submit"],
+a.button {
+    width: 170px;
+    background-color: #ccc;
+    border: 1px solid #D0D0D0;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 13px 4px;
+    font-size: 1.2em;
+    margin-right: 4px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1280px) {
+    form {
+        width: 100%
+    }
+
+    button,
+    input[type="submit"],
+    a.button {
+        margin-right: 0;
+    }
+
+    main {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .box {
+        flex-direction: column;
+        align-items: center;
+        flex-basis: 50%;
+    }
+
+    aside, .editButtonHolder, .note-dates, .note-text {
+        width: 100%;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .configurations, .note-info, .note-text {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    button,
+    input[type="submit"],
+    a.button {
+        width: 100%;
+    }
+
+    .box {
+        flex-basis: 100%;
+        width: 100%;
+    }
+}

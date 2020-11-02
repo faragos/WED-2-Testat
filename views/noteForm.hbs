@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit note</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+  {{#ifEquals theme 'dark' }}
+    <link rel="stylesheet" type="text/css" href="../css/dark-theme.css">
+  {{/ifEquals}}
+</head>
+<body>
+{{#with note}}
+  <div class="container edit-note">
+    <form id="note-form" action='/edit/{{_id}}' method='post'>
+        {{#if _id}}
+          <input type='hidden' name='_method' value='put'>
+        {{/if}}
+
+      <label for="title">Title</label>
+        <input name="title" id="title" type="text" required value="{{title}}">
+
+        <label for="description">Description</label>
+        <textarea name="description" id="description">{{description}}</textarea>
+
+        <label for="finishDate">Finish Date</label>
+        <input name="finishDate" id="finish-date" type="date" required value="{{finishDate}}">
+      <label for="importance"></label>
+      <select name="importance" id="importance">
+        <option value="1" {{#ifEquals importance "1"}} selected {{/ifEquals}}>1</option>
+        <option value="2" {{#ifEquals importance "2"}} selected {{/ifEquals}}>2</option>
+        <option value="3" {{#ifEquals importance "3"}} selected {{/ifEquals}}>3</option>
+        <option value="4" {{#ifEquals importance "4"}} selected {{/ifEquals}}>4</option>
+        <option value="5" {{#ifEquals importance "5"}} selected {{/ifEquals}}>5</option>
+      </select>
+        <label for="finished">Finished</label>
+        <input name="finished" id="finished" type="checkbox" {{#if finished}}checked{{/if}}>
+
+        <input class="save" type="submit" value="Save">
+        <a class="button cancel" href="/">Cancel</a>
+    </form>
+</div>
+{{/with}}
+</body>
+</html>
