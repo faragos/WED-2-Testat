@@ -22,15 +22,15 @@
                         <div>
                           <div class="sort-label">Sort by:</div>
                           <div class="sort-options">
-                            <form action="/" method="get">
+                            <form action="/" method="post">
                                 <input type="hidden" name="orderBy" value="finishDate" />
                                 <button type="submit" class="btn-color-sort-filter">By finish date</button>
                             </form>
-                            <form action="/" method="get">
+                            <form action="/" method="post">
                                 <input type="hidden" name="orderBy" value="createDate" />
                                 <button type="submit" class="btn-color-sort-filter">By create date</button>
                             </form>
-                            <form action="/" method="get">
+                            <form action="/" method="post">
                                 <input type="hidden" name="orderBy" value="importance" />
                                 <button type="submit" class="btn-color-sort-filter">By Importance</button>
                             </form>
@@ -38,13 +38,13 @@
                         </div>
                     </div>
                     <aside>
-                        <form action="/" method="get" class="filter">
+                        <form action="/" method="post" class="filter">
                           <input type="hidden" name="theme"
                                  value="{{#ifEquals theme 'light' }}dark{{else}}light{{/ifEquals}}" />
                           <button type="submit">Use {{#ifEquals theme 'light' }}
                             Dark{{else}}Light{{/ifEquals}}-Theme</button>
                         </form>
-                        <form action="/" method="get" class="filter">
+                        <form action="/" method="post" class="filter">
                           <input type="hidden" name="showFinished"
                                  value="{{#if showFinished }}false{{else}}true{{/if}}" />
                           <button type="submit"

@@ -17,7 +17,7 @@ class UserSettings {
 
 const sessionUserSettings = (req, res, next) => {
   const userSettings: UserSettings = req.session.userSettings || new UserSettings();
-  const {orderBy, showFinished, theme} = req.query
+  const {orderBy, showFinished, theme} = req.body
   const ALLOWED_ORDERBY_VALUES: string [] = ['importance', 'createDate', 'finishDate']
   const ALLOWED_THEME_VALUES: string [] = ['light', 'dark']
   const ALLOWED_ORDER_DIRECTION_VALUES: number [] = [-1, 1]
