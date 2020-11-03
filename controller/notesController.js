@@ -35,6 +35,11 @@ export class NotesController {
                 });
             });
         };
+        this.setIndex = function (req, res) {
+            return __awaiter(this, void 0, void 0, function* () {
+                res.redirect("/");
+            });
+        };
         this.showNoteForm = function (req, res) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (req.params.id) {

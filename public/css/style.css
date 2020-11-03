@@ -7,6 +7,12 @@ body {
     background-color: #eee;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .container {
     max-width: 1280px;
     margin: 0 auto;
@@ -19,7 +25,6 @@ body {
     flex-wrap: wrap;
 }
 
-.configurations,
 .note-info,
 .note-text {
     width: 70%;
@@ -68,7 +73,6 @@ aside, .edit-button-holder {
     justify-content: center;
 }
 
-aside,
 .edit-button-holder,
 .note-dates {
     width: 30%;
@@ -166,19 +170,33 @@ a.button {
         flex-basis: 50%;
     }
 
-    aside, .editButtonHolder, .note-dates, .note-text {
+    .editButtonHolder, .note-dates, .note-text {
         width: 100%;
         align-items: center;
         display: flex;
         flex-direction: column;
     }
 
-    .configurations, .note-info, .note-text {
+    aside {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .note-info, .note-text {
         width: 100%;
     }
 }
 
 @media only screen and (max-width: 600px) {
+    header {
+        display: block;
+    }
+
+    aside {
+        margin-top: 20px;
+    }
+
     button,
     input[type="submit"],
     a.button {

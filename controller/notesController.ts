@@ -20,6 +20,10 @@ export class NotesController {
         })
     }
 
+    setIndex = async function (req, res) {
+        res.redirect("/");
+    }
+
     showNoteForm = async function (req, res) {
         if (req.params.id) {
             const note = await notesStore.getNote(req.params.id)
