@@ -207,4 +207,8 @@ a.button {
         flex-basis: 100%;
         width: 100%;
     }
+
+    .cancel {
+        margin-top: 10px;
+    }
 }

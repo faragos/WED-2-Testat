@@ -1,5 +1,5 @@
 export function registerHelpers(hbs) {
-  hbs.registerHelper('times', function (n, block) {
+  hbs.registerHelper('times', function (n: number, block) {
     let accum = ''
     for (let i = 0; i < n; ++i) {
       accum += block.fn(i)
@@ -7,7 +7,7 @@ export function registerHelpers(hbs) {
     return accum
   })
 
-  hbs.registerHelper('formatDate', function (datetime) {
+  hbs.registerHelper('formatDate', function (datetime: string) {
     return new Date(datetime).toISOString().substring(0, 10)
   })
 
@@ -17,7 +17,7 @@ export function registerHelpers(hbs) {
       return options.fn(this)
     }
     // @ts-ignore
-    return options.inverse(this)
+    return options.inverse()
   })
 }
 

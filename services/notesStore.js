@@ -9,6 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import Datastore from 'nedb-promises';
+export class Note {
+    constructor(title, description, finishDate, importance, finished) {
+        this.title = title;
+        this.description = description;
+        this.finishDate = finishDate;
+        this.importance = importance;
+        this.finished = finished;
+        this.createDate = new Date();
+    }
+}
 export class NotesStore {
     constructor() {
         this.db = new Datastore({ filename: './data/notes.db', autoload: true });

@@ -15,6 +15,6 @@ export function registerHelpers(hbs) {
             return options.fn(this);
         }
         // @ts-ignore
-        return options.inverse(this);
+        return options.inverse();
     });
 }

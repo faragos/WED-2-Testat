@@ -7,16 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { notesStore } from '../services/notesStore.js';
-class Note {
-    constructor(title, description, finishDate, importance, finished) {
-        this.title = title;
-        this.description = description;
-        this.finishDate = finishDate;
-        this.importance = importance;
-        this.finished = finished;
-    }
-}
+import { Note, notesStore } from '../services/notesStore.js';
 export class NotesController {
     constructor() {
         this.showIndex = function (req, res) {

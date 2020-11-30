@@ -1,4 +1,4 @@
-class UserSettings {
+class Usersettings {
     constructor(orderBy = 'importance', orderDirection = -1, showFinished = false, theme = 'light') {
         this.orderBy = orderBy;
         this.orderDirection = orderDirection;
@@ -7,7 +7,7 @@ class UserSettings {
     }
 }
 export const sessionUserSettings = (req, res, next) => {
-    const userSettings = req.session.userSettings || new UserSettings();
+    const userSettings = req.session && req.session.userSettings ? req.session.userSettings : new Usersettings();
     const { orderBy, showFinished, theme } = req.body;
     const ALLOWED_ORDERBY_VALUES = ['importance', 'createDate', 'finishDate'];
     const ALLOWED_THEME_VALUES = ['light', 'dark'];
@@ -26,6 +26,7 @@ export const sessionUserSettings = (req, res, next) => {
     if (theme && ALLOWED_THEME_VALUES.includes(theme)) {
         userSettings.theme = theme;
     }
+    // @ts-ignore
     req.userSettings = req.session.userSettings = userSettings;
     next();
 };
