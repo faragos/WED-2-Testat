@@ -26,7 +26,8 @@ export class NotesStore {
     getAllNotes(orderBy, orderDirection) {
         return __awaiter(this, void 0, void 0, function* () {
             if (orderBy) {
-                return this.db.find({}).sort({ [orderBy]: orderDirection }).exec();
+                // Sort returns an Array of documents[][] instead of Note[]
+                return yield this.db.find({}).sort({ [orderBy]: orderDirection }).exec();
             }
             else {
                 return this.db.find({});
@@ -36,7 +37,8 @@ export class NotesStore {
     getOpenNotes(orderBy, orderDirection) {
         return __awaiter(this, void 0, void 0, function* () {
             if (orderBy) {
-                return this.db.find({ finished: false }).sort({ [orderBy]: orderDirection }).exec();
+                // Sort returns an Array of documents[][] instead of Note[]
+                return yield this.db.find({ finished: false }).sort({ [orderBy]: orderDirection }).exec();
             }
             else {
                 return this.db.find({ finished: false });
@@ -52,7 +54,7 @@ export class NotesStore {
     updateNote(note) {
         return __awaiter(this, void 0, void 0, function* () {
             const doc = yield notesStore.getNote(note._id);
-            this.db.update(doc, note, {});
+            yield this.db.update(doc, note, {});
         });
     }
     getNote(id) {

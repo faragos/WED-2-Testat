@@ -34,6 +34,7 @@ export const sessionUserSettings = (req: Request, res: Response, next: NextFunct
   if (theme && ALLOWED_THEME_VALUES.includes(theme)) {
     userSettings.theme = theme
   }
+  // Fist time session doesn't exist, so it's undefined and we overwrite it
   // @ts-ignore
   req.userSettings = req.session.userSettings = userSettings
   next()

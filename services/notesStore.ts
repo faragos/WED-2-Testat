@@ -10,39 +10,41 @@ export class Note {
 }
 
 export class NotesStore {
-  private db: any;
+  private db: Datastore;
 
   constructor() {
     this.db = new Datastore({filename: './data/notes.db', autoload: true})
   }
 
-  async getAllNotes(orderBy: string, orderDirection: number) {
+  async getAllNotes(orderBy: string, orderDirection: number): Promise<Note[]> {
     if (orderBy) {
-      return this.db.find({}).sort({[orderBy]: orderDirection}).exec()
+      // Sort returns an Array of documents[][] instead of Note[]
+      return await this.db.find({}).sort({[orderBy]: orderDirection}).exec() as unknown as Promise<Note[]>
     } else {
       return this.db.find({})
     }
   }
 
-  async getOpenNotes(orderBy: string, orderDirection: number) {
+  async getOpenNotes(orderBy: string, orderDirection: number): Promise<Note[]> {
     if (orderBy) {
-      return this.db.find({finished: false}).sort({[orderBy]: orderDirection}).exec()
+      // Sort returns an Array of documents[][] instead of Note[]
+      return await this.db.find({finished: false}).sort({[orderBy]: orderDirection}).exec() as unknown as Promise<Note[]>
     } else {
       return this.db.find({finished: false})
     }
   }
 
-  async addNote(note: Note) {
+  async addNote(note: Note): Promise<Note> {
     note.createDate = new Date()
     return this.db.insert(note)
   }
 
-  async updateNote(note: Note) {
+  async updateNote(note: Note): Promise<void> {
     const doc = await notesStore.getNote(note._id)
-    this.db.update(doc, note, {})
+    await this.db.update(doc, note, {})
   }
 
-  async getNote(id: string | undefined) {
+  async getNote(id: string | undefined): Promise<Note> {
     return this.db.findOne({_id: id})
   }
 }

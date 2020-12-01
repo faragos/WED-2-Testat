@@ -2,7 +2,7 @@ import {Note, notesStore} from '../services/notesStore.js'
 import {Request, Response} from "express";
 
 export class NotesController {
-  showIndex = async function (req: Request, res: Response) {
+  showIndex = async function (req: Request, res: Response): Promise<void> {
     let notes: Note[]
     if (req.userSettings.showFinished) {
       notes = await notesStore.getAllNotes(req.userSettings.orderBy, req.userSettings.orderDirection)
@@ -16,11 +16,11 @@ export class NotesController {
     })
   }
 
-  setIndex = async function (req: Request, res: Response) {
+  setIndex = async function (req: Request, res: Response): Promise<void> {
     res.redirect("/");
   }
 
-  showNoteForm = async function (req: Request, res: Response) {
+  showNoteForm = async function (req: Request, res: Response): Promise<void> {
     if (req.params.id) {
       const note: Note = await notesStore.getNote(req.params.id)
       res.render('noteForm', {note, theme: req.userSettings.theme})
@@ -29,13 +29,13 @@ export class NotesController {
     }
   }
 
-  addNote = async function (req: Request, res: Response) {
+  addNote = async function (req: Request, res: Response): Promise<void> {
     const note: Note = new Note(req.body.title, req.body.description, req.body.finishDate, req.body.importance, !!req.body.finished)
     await notesStore.addNote(note)
     res.redirect('/')
   }
 
-  updateNote = async function (req: Request, res: Response) {
+  updateNote = async function (req: Request, res: Response): Promise<void> {
     const note: Note = await notesStore.getNote(req.params.id)
     note.title = req.body.title
     note.description = req.body.description

@@ -13,10 +13,10 @@ export function registerHelpers(hbs) {
 
   hbs.registerHelper('ifEquals', function (v1, v2, options) {
     if (v1 === v2) {
+      // Proposed arrow function doesn't solve the issue with this
       // @ts-ignore
       return options.fn(this)
     }
-    // @ts-ignore
     return options.inverse()
   })
 }
